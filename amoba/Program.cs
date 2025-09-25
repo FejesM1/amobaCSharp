@@ -10,6 +10,7 @@ namespace amoba
     internal class Program
     {
         static string[,] palya = new string[10, 10];
+        
         static void Main(string[] args)
         {
             for (int i = 0; i < 10; i++)
@@ -19,17 +20,35 @@ namespace amoba
                     palya[i, j] = "   ";
                 }
             }
-
-           
-            Kiir();
-
-            Console.ReadLine();
+            while(true)
+            {
+             Kiir();
+           string jatekos = "x";
+            
             Console.WriteLine("Adja meg az elso koordinátát: ");
-            int x = Convert.ToInt32(Console.ReadLine());
+            int xkoor = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Adja meg a második koordinátát: ");
-            int y = Convert.ToInt32(Console.ReadLine());
+            int ykoor = Convert.ToInt32(Console.ReadLine());
 
-           
+            Lep(xkoor, ykoor, jatekos);
+
+            void Lep(int x, int y, string jel)
+            {
+                if (x < 0 || x >= 10 || y < 0 || y >= 10)
+                {
+                    Console.WriteLine("Érvénytelen koordináta");
+                }
+                if (palya[x, y] == "   ")
+                {
+                    palya[x, y] = jel;
+                }
+                else
+                {
+                    Console.WriteLine("Ez a mező már foglalt!");
+                }
+
+            }
+            }
         }
         static void Kiir()
         {
