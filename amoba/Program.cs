@@ -1,105 +1,96 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace amoba
 {
     internal class Program
     {
         static string[,] palya = new string[10, 10];
-        
-        
+
         static void Main(string[] args)
         {
-            for (int i = 0; i < 10; i++)
-            {
-                for (int j = 0; j < 10; j++)
-                {
-                    palya[i, j] = "   ";
-                }
-            } 
-            bool lepes = false;
-            bool jatek = false;
             
+            for (int i = 0; i < 10; i++)
+                for (int j = 0; j < 10; j++)
+                    palya[i, j] = "   ";
+
+            bool lepes = false; 
+            bool jatek = false;
+
+          
             Console.WriteLine("****Amőba játék****");
             Console.WriteLine("1. Játék indítása");
-            if (Console.ReadLine() == "1")
+            Console.WriteLine("2. Kilépés");
+
+            string valasztas = Console.ReadLine();
+            if (valasztas == "1")
             {
                 jatek = true;
             }
             else
             {
                 Console.WriteLine("Kilépés...");
+                Console.ReadKey();
                 Environment.Exit(0);
             }
 
+            
             while (jatek)
             {
-
+                Console.Clear();
                 Kiir();
-
 
                 string jatekos = lepes ? "  o" : "  x";
 
-                Console.WriteLine("Adja meg az elso koordinátát: ");
-                int xkoor = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Adja meg a második koordinátát: ");
-                int ykoor = Convert.ToInt32(Console.ReadLine());
+                int xkoor, ykoor;
 
-                Lep(xkoor, ykoor, jatekos);
-
-                Console.Clear();
-                lepes = !lepes;
-
-
-
-                void Lep(int x, int y, string jel)
+                
+                while (true)
                 {
-                    if (x < 0 || x >= 10 || y < 0 || y >= 10)
-                    {
-                        Console.WriteLine("Érvénytelen koordináta");
-                    }
-                    if (palya[x, y] == "   ")
-                    {
-                        palya[x, y] = jel;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Ez a mező már foglalt!");
-                    }
+                    Console.WriteLine($"{jatekos} következik.");
+                    Console.Write("Adja meg az első koordinátát (0-9): ");
+                    if (!int.TryParse(Console.ReadLine(), out xkoor)) continue;
+                    Console.Write("Adja meg a második koordinátát (0-9): ");
+                    if (!int.TryParse(Console.ReadLine(), out ykoor)) continue;
 
+                    if (xkoor < 0 || xkoor > 9 || ykoor < 0 || ykoor > 9)
+                    {
+                        Console.WriteLine("Érvénytelen koordináta! Próbálja újra.");
+                        continue;
+                    }
+                    if (palya[xkoor, ykoor] != "   ")
+                    {
+                        Console.WriteLine("Ez a mező már foglalt! Próbálja újra.");
+                        continue;
+                    }
+                    break; 
                 }
+
+                
+                palya[xkoor, ykoor] = jatekos;
+
+                
+                lepes = !lepes;
             }
-            
         }
+
+        
         static void Kiir()
         {
             Console.WriteLine("┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐");
-
-            for (int c = 0; c < 10; c++)
+            for (int i = 0; i < 10; i++)
             {
                 Console.Write("|");
-                for (int o = 0; o < 10; o++)
+                for (int j = 0; j < 10; j++)
                 {
-                    Console.Write(palya[c, o]);
-                    Console.Write('|');
+                    Console.Write(palya[i, j]);
+                    Console.Write("|");
                 }
-
                 Console.WriteLine();
-                if (c != 9)
-                {
+                if (i != 9)
                     Console.WriteLine("├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤");
-
-                }
                 else
-                {
                     Console.WriteLine("└───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘");
-                }
-           }  }
-            
-       
+            }
+        }
     }
-}   
+}
