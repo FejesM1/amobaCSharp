@@ -19,12 +19,17 @@ namespace amoba
                 {
                     palya[i, j] = "   ";
                 }
-            }
+            } 
+            bool lepes = false;
+            
             while(true)
             {
+             Console.Clear();
              Kiir();
-           string jatekos = "x";
+           
             
+             string jatekos = lepes ? "  o" : "  x";
+
             Console.WriteLine("Adja meg az elso koordinátát: ");
             int xkoor = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Adja meg a második koordinátát: ");
@@ -32,7 +37,12 @@ namespace amoba
 
             Lep(xkoor, ykoor, jatekos);
 
-            void Lep(int x, int y, string jel)
+            
+            lepes = !lepes;
+
+
+
+                void Lep(int x, int y, string jel)
             {
                 if (x < 0 || x >= 10 || y < 0 || y >= 10)
                 {
