@@ -35,44 +35,45 @@ namespace amoba
                 Console.WriteLine("Kilépés...");
                 Environment.Exit(0);
             }
-            
+
             while (jatek)
             {
-             
-             Kiir();
-           
-            
-             string jatekos = lepes ? "  o" : "  x";
 
-            Console.WriteLine("Adja meg az elso koordinátát: ");
-            int xkoor = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Adja meg a második koordinátát: ");
-            int ykoor = Convert.ToInt32(Console.ReadLine());
+                Kiir();
 
-            Lep(xkoor, ykoor, jatekos);
 
-            Console.Clear();
-            lepes = !lepes;
+                string jatekos = lepes ? "  o" : "  x";
+
+                Console.WriteLine("Adja meg az elso koordinátát: ");
+                int xkoor = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Adja meg a második koordinátát: ");
+                int ykoor = Convert.ToInt32(Console.ReadLine());
+
+                Lep(xkoor, ykoor, jatekos);
+
+                Console.Clear();
+                lepes = !lepes;
 
 
 
                 void Lep(int x, int y, string jel)
-            {
-                if (x < 0 || x >= 10 || y < 0 || y >= 10)
                 {
-                    Console.WriteLine("Érvénytelen koordináta");
-                }
-                if (palya[x, y] == "   ")
-                {
-                    palya[x, y] = jel;
-                }
-                else
-                {
-                    Console.WriteLine("Ez a mező már foglalt!");
-                }
+                    if (x < 0 || x >= 10 || y < 0 || y >= 10)
+                    {
+                        Console.WriteLine("Érvénytelen koordináta");
+                    }
+                    if (palya[x, y] == "   ")
+                    {
+                        palya[x, y] = jel;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ez a mező már foglalt!");
+                    }
 
+                }
             }
-            }
+            
         }
         static void Kiir()
         {
@@ -97,23 +98,8 @@ namespace amoba
                 {
                     Console.WriteLine("└───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘");
                 }
-            }
-            void Lep(int x, int y, string jel)
-            {
-                if (x < 0 || x >= 10 || y < 0 || y >= 10)
-                {
-                    Console.WriteLine("Érvénytelen koordináta");
-                }
-                if (palya[x, y] == "   ")
-                {
-                    palya[x, y] = jel;
-                }
-                else
-                {
-                    Console.WriteLine("Ez a mező már foglalt!");                
-                }
-
-            }
-        }
+           }  }
+            
+       
     }
 }   
