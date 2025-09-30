@@ -11,6 +11,7 @@ namespace amoba
     {
         static string[,] palya = new string[10, 10];
         
+        
         static void Main(string[] args)
         {
             for (int i = 0; i < 10; i++)
@@ -21,10 +22,23 @@ namespace amoba
                 }
             } 
             bool lepes = false;
+            bool jatek = false;
             
-            while(true)
+            Console.WriteLine("****Amőba játék****");
+            Console.WriteLine("1. Játék indítása");
+            if (Console.ReadLine() == "1")
             {
-             Console.Clear();
+                jatek = true;
+            }
+            else
+            {
+                Console.WriteLine("Kilépés...");
+                Environment.Exit(0);
+            }
+            
+            while (jatek)
+            {
+             
              Kiir();
            
             
@@ -37,7 +51,7 @@ namespace amoba
 
             Lep(xkoor, ykoor, jatekos);
 
-            
+            Console.Clear();
             lepes = !lepes;
 
 
