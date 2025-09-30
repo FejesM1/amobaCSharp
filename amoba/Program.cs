@@ -47,12 +47,12 @@ namespace amoba
                 while (true)
                 {
                     Console.WriteLine($"{jatekos} következik.");
-                    Console.Write("Adja meg az első koordinátát (0-9): ");
+                    Console.Write("Adja meg az első koordinátát (1-10): ");
                     if (!int.TryParse(Console.ReadLine(), out xkoor)) continue;
-                    Console.Write("Adja meg a második koordinátát (0-9): ");
+                    Console.Write("Adja meg a második koordinátát (1-10): ");
                     if (!int.TryParse(Console.ReadLine(), out ykoor)) continue;
 
-                    if (xkoor < 0 || xkoor > 9 || ykoor < 0 || ykoor > 9)
+                    if (xkoor < 1 || xkoor > 10 || ykoor < 1 || ykoor > 10)
                     {
                         Console.WriteLine("Érvénytelen koordináta! Próbálja újra.");
                         continue;
@@ -66,7 +66,7 @@ namespace amoba
                 }
 
                 
-                palya[xkoor, ykoor] = jatekos;
+                palya[xkoor-1, ykoor-1] = jatekos;
 
                 
                 lepes = !lepes;
