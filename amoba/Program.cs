@@ -190,10 +190,21 @@ namespace amoba
         
         static void Kiir()
         {
-            Console.WriteLine("┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐");
+             Console.Write("  ");
+            for (int j = 1; j <= 10; j++)
+            {
+               
+                Console.Write($" {j,2} ");  
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("  ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐");
             for (int i = 0; i < 10; i++)
             {
-                Console.Write("|");
+                // Sor száma bal oldalon
+                Console.Write($"{i + 1,2}|");
+
+                // Cella tartalom
                 for (int j = 0; j < 10; j++)
                 {
                     Console.Write(palya[i, j]);
@@ -201,9 +212,9 @@ namespace amoba
                 }
                 Console.WriteLine();
                 if (i != 9)
-                    Console.WriteLine("├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤");
+                    Console.WriteLine("  ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤");
                 else
-                    Console.WriteLine("└───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘");
+                    Console.WriteLine("  └───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘");
             }
         }
     }
