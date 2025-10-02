@@ -39,6 +39,9 @@ namespace amoba
                     Console.WriteLine("1. Fekete (alap)");
                     Console.WriteLine("2. Fehér");
                     Console.WriteLine("3. Kék");
+                    Console.WriteLine("4. Cián");
+                    Console.WriteLine("5. Vörös");
+                    Console.WriteLine("6. Zöld");
                     string alvalasztas = Console.ReadLine();
                     if (alvalasztas == "1")
                     {
@@ -58,6 +61,24 @@ namespace amoba
                         tema = "kék";
                         fomenu = true;
                     }
+                    else if (alvalasztas == "4")
+                    {
+                        Console.Clear();
+                        tema = "cián";
+                        fomenu = true;
+                    }
+                    else if (alvalasztas == "5")
+                    {
+                        Console.Clear();
+                        tema = "vörös";
+                        fomenu = true;
+                    }
+                    else if (alvalasztas == "6")
+                    {
+                        Console.Clear();
+                        tema = "zöld";
+                        fomenu = true;
+                    }
                     if (tema == "fekete")
                     {
                     Console.BackgroundColor = ConsoleColor.Black;
@@ -71,6 +92,21 @@ namespace amoba
                     else if (tema == "kék")
                     {
                         Console.BackgroundColor = ConsoleColor.Blue;
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else if (tema == "cián")
+                    {
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                    }
+                    else if (tema == "vörös")
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else if (tema == "zöld")
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkGreen;
                         Console.ForegroundColor = ConsoleColor.White;
                     }
                 }
