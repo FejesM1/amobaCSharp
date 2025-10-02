@@ -165,10 +165,10 @@ namespace amoba
             Console.WriteLine("  ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐");
             for (int i = 0; i < 10; i++)
             {
-                // Sor száma bal oldalon
+                
                 Console.Write($"{i + 1,2}|");
 
-                // Cella tartalom
+                
                 for (int j = 0; j < 10; j++)
                 {
                     Console.Write(palya[i, j]);
