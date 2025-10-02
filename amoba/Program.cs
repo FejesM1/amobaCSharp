@@ -38,6 +38,7 @@ namespace amoba
                     Console.Clear();
                     Console.WriteLine("1. Fekete (alap)");
                     Console.WriteLine("2. Fehér");
+                    Console.WriteLine("3. Kék");
                     string alvalasztas = Console.ReadLine();
                     if (alvalasztas == "1")
                     {
@@ -51,6 +52,12 @@ namespace amoba
                         tema = "fehér";
                         fomenu = true;
                     }
+                    else if (alvalasztas == "3")
+                    {
+                        Console.Clear();
+                        tema = "kék";
+                        fomenu = true;
+                    }
                     if (tema == "fekete")
                     {
                     Console.BackgroundColor = ConsoleColor.Black;
@@ -60,6 +67,11 @@ namespace amoba
                     {
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.Black;
+                    }
+                    else if (tema == "kék")
+                    {
+                        Console.BackgroundColor = ConsoleColor.Blue;
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                 }
                 else
@@ -71,7 +83,8 @@ namespace amoba
             } while (fomenu);
 
             while (jatek)
-            {   
+            {
+                bool jatekmenet = true;
                 Console.Clear();
                 Kiir();
 
@@ -85,17 +98,28 @@ namespace amoba
                 while (jatekb)
                 {
                     Console.WriteLine($"{jatekos} következik.");
-                    Console.Write("Adja meg az első koordinátát (1-10): ");
+                    Console.Write("Adja meg az első koordinátát (1-10) ('q' a kilépéshez): ");
                     string bemenet = Console.ReadLine();
-                    
+                    if (bemenet == "q")
+                    {
+                        Console.WriteLine("Viszlát!");
+                        jatekmenet = false;
+                        break;
+                    }
 
                     if (!int.TryParse(bemenet, out xkoor))
                     {
                         Console.WriteLine("Kérlek számot adj meg!");
                         continue;
                     }
-                    Console.Write("Adja meg a második koordinátát (1-10): ");
+                    Console.Write("Adja meg a második koordinátát (1-10) ('q' a kilépéshez): ");
                     string bemenet2 = Console.ReadLine();
+                    if (bemenet2 == "q")
+                    {
+                        Console.WriteLine("Viszlát!");
+                        jatekmenet = false;
+                        break;
+                    }
                     if (!int.TryParse(bemenet2, out ykoor))
                     {
                         Console.WriteLine("Kérlek számot adj meg!");
@@ -114,7 +138,11 @@ namespace amoba
                     }
                     break; 
                 }
-
+                
+                if(jatekmenet == false)
+                {
+                    break;
+                }
                 
                 palya[xkoor-1, ykoor-1] = jatekos;
 
