@@ -15,53 +15,60 @@ namespace amoba
 
             bool lepes = false; 
             bool jatek = false;
+            bool fomenu = false;
 
-            Console.WriteLine("****Amőba játék****");
-            Console.WriteLine("1. Játék indítása");
-            Console.WriteLine("2. Téma választása");
-            Console.WriteLine("3. Kilépés");
+            do
+            {
+                Console.WriteLine("****Amőba játék****");
+                Console.WriteLine("1. Játék indítása");
+                Console.WriteLine("2. Téma választása");
+                Console.WriteLine("3. Kilépés");
 
-            string tema = "fekete";
-            if (tema == "fekete")
-            {
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.White;
-            }
-            else if(tema == "fehér") 
-            {
-                Console.BackgroundColor = ConsoleColor.White;
-                Console.ForegroundColor = ConsoleColor.Black;
-            }
-            string valasztas = Console.ReadLine();
-            if (valasztas == "1")
-            {
-                jatek = true;
-            }
-            else if (valasztas == "2")
-            {
-                Console.Clear();
-                Console.WriteLine("1. Fekete (alap)");
-                Console.WriteLine("2. Fehér");
-                string alvalasztas = Console.ReadLine();
-                if (alvalasztas == "1")
+                string tema = "fekete";
+                
+                string valasztas = Console.ReadLine();
+                if (valasztas == "1")
+                {
+                    jatek = true;
+                    fomenu = false;
+                }
+                else if (valasztas == "2")
                 {
                     Console.Clear();
-                    tema = "fekete";
+                    Console.WriteLine("1. Fekete (alap)");
+                    Console.WriteLine("2. Fehér");
+                    string alvalasztas = Console.ReadLine();
+                    if (alvalasztas == "1")
+                    {
+                        Console.Clear();
+                        tema = "fekete";
+                        fomenu = true;
+                    }
+                    else if (alvalasztas == "2")
+                    {
+                        Console.Clear();
+                        tema = "fehér";
+                        fomenu = true;
+                    }
+                    if (tema == "fekete")
+                    {
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else if (tema == "fehér")
+                    {
+                        Console.BackgroundColor = ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.Black;
+                    }
                 }
-                else if(alvalasztas == "2")
+                else
                 {
-                    Console.Clear();
-                    tema = "fehér";
+                    Console.WriteLine("Kilépés...");
+                    Console.ReadKey();
+                    Environment.Exit(0);
                 }
-            }
-            else
-            {
-                Console.WriteLine("Kilépés...");
-                Console.ReadKey();
-                Environment.Exit(0);
-            }
+            } while (fomenu);
 
-            
             while (jatek)
             {   
                 Console.Clear();
