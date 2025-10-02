@@ -16,15 +16,43 @@ namespace amoba
             bool lepes = false; 
             bool jatek = false;
 
-          
             Console.WriteLine("****Amőba játék****");
             Console.WriteLine("1. Játék indítása");
-            Console.WriteLine("2. Kilépés");
+            Console.WriteLine("2. Téma választása");
+            Console.WriteLine("3. Kilépés");
 
+            string tema = "fekete";
+            if (tema == "fekete")
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if(tema == "fehér") 
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
+            }
             string valasztas = Console.ReadLine();
             if (valasztas == "1")
             {
                 jatek = true;
+            }
+            else if (valasztas == "2")
+            {
+                Console.Clear();
+                Console.WriteLine("1. Fekete (alap)");
+                Console.WriteLine("2. Fehér");
+                string alvalasztas = Console.ReadLine();
+                if (alvalasztas == "1")
+                {
+                    Console.Clear();
+                    tema = "fekete";
+                }
+                else if(alvalasztas == "2")
+                {
+                    Console.Clear();
+                    tema = "fehér";
+                }
             }
             else
             {
@@ -35,7 +63,7 @@ namespace amoba
 
             
             while (jatek)
-            {
+            {   
                 Console.Clear();
                 Kiir();
 
