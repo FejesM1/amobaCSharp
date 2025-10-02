@@ -39,7 +39,7 @@ namespace amoba
                 Console.Clear();
                 Kiir();
 
-                string jatekos = lepes ? "  o" : "  x";
+                string jatekos = lepes ? " o " : " x ";
 
                 int xkoor, ykoor;
 
