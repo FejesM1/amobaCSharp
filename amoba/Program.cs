@@ -79,23 +79,35 @@ namespace amoba
 
                 int xkoor = 0;
                 int ykoor = 0;
-                
 
-                
-                while (true)
+
+                bool jatekb = true;
+                while (jatekb)
                 {
                     Console.WriteLine($"{jatekos} következik.");
                     Console.Write("Adja meg az első koordinátát (1-10): ");
-                    xkoor = int.Parse(Console.ReadLine());
-                    Console.Write("Adja meg a második koordinátát (1-10): ");
-                    ykoor = int.Parse(Console.ReadLine());
+                    string bemenet = Console.ReadLine();
+                    
 
-                    if (xkoor < 1 || xkoor > 10 || ykoor < 1 || ykoor > 10)
+                    if (!int.TryParse(bemenet, out xkoor))
+                    {
+                        Console.WriteLine("Kérlek számot adj meg!");
+                        continue;
+                    }
+                    Console.Write("Adja meg a második koordinátát (1-10): ");
+                    string bemenet2 = Console.ReadLine();
+                    if (!int.TryParse(bemenet2, out ykoor))
+                    {
+                        Console.WriteLine("Kérlek számot adj meg!");
+                        continue;
+                    }
+                    
+                    else if (xkoor < 1 || xkoor > 10 || ykoor < 1 || ykoor > 10)
                     {
                         Console.WriteLine("Érvénytelen koordináta! Próbálja újra.");
                         continue;
                     }
-                    if (palya[xkoor-1, ykoor-1] != "   ")
+                    else if (palya[xkoor-1, ykoor-1] != "   ")
                     {
                         Console.WriteLine("Ez a mező már foglalt! Próbálja újra.");
                         continue;
