@@ -16,7 +16,7 @@ namespace amoba
             bool lepes = false; 
             bool jatek = false;
             bool fomenu = false;
-
+            
             do
             {
                 Console.Clear();
@@ -42,6 +42,10 @@ namespace amoba
                     Console.WriteLine("4. Cián");
                     Console.WriteLine("5. Vörös");
                     Console.WriteLine("6. Zöld");
+                    Console.WriteLine("7. Fekete-zöld");
+                    Console.WriteLine("8. Fekete-vörös");
+                    Console.WriteLine("9. Lila");
+                    Console.WriteLine("10. Fekete-lila");
                     string alvalasztas = Console.ReadLine();
                     if (alvalasztas == "1")
                     {
@@ -79,6 +83,30 @@ namespace amoba
                         tema = "zöld";
                         fomenu = true;
                     }
+                    else if (alvalasztas == "7")
+                    {
+                        Console.Clear();
+                        tema = "fekete-zöld";
+                        fomenu = true;
+                    }
+                    else if (alvalasztas == "8")
+                    {
+                        Console.Clear();
+                        tema = "fekete-vörös";
+                        fomenu = true;
+                    }
+                    else if (alvalasztas == "9")
+                    {
+                        Console.Clear();
+                        tema = "lila";
+                        fomenu = true;
+                    }
+                    else if (alvalasztas == "10")
+                    {
+                        Console.Clear();
+                        tema = "fekete-lila";
+                        fomenu = true;
+                    }
                     if (tema == "fekete")
                     {
                     Console.BackgroundColor = ConsoleColor.Black;
@@ -108,6 +136,26 @@ namespace amoba
                     {
                         Console.BackgroundColor = ConsoleColor.DarkGreen;
                         Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else if (tema == "fekete-zöld")
+                    {
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    }
+                    else if (tema == "fekete-vörös")
+                    {
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                    }
+                    else if (tema == "lila")
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else if (tema == "fekete-lila")
+                    {
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.Magenta;
                     }
                 }
                 else
@@ -177,7 +225,9 @@ namespace amoba
                 
                 if(jatekmenet == false)
                 {
+                    
                     break;
+                   
                 }
                 
                 palya[xkoor-1, ykoor-1] = jatekos;
