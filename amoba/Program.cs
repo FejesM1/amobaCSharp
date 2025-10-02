@@ -19,6 +19,7 @@ namespace amoba
 
             do
             {
+                Console.Clear();
                 Console.WriteLine("****Amőba játék****");
                 Console.WriteLine("1. Játék indítása");
                 Console.WriteLine("2. Téma választása");
@@ -57,8 +58,8 @@ namespace amoba
                     }
                     else if (tema == "fehér")
                     {
-                        Console.BackgroundColor = ConsoleColor.White;
-                        Console.ForegroundColor = ConsoleColor.Black;
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Black;
                     }
                 }
                 else
