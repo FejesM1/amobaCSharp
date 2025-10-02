@@ -41,23 +41,25 @@ namespace amoba
 
                 string jatekos = lepes ? " o " : " x ";
 
-                int xkoor, ykoor;
+                int xkoor = 0;
+                int ykoor = 0;
+                
 
                 
                 while (true)
                 {
                     Console.WriteLine($"{jatekos} következik.");
                     Console.Write("Adja meg az első koordinátát (1-10): ");
-                    if (!int.TryParse(Console.ReadLine(), out xkoor)) continue;
+                    xkoor = int.Parse(Console.ReadLine());
                     Console.Write("Adja meg a második koordinátát (1-10): ");
-                    if (!int.TryParse(Console.ReadLine(), out ykoor)) continue;
+                    ykoor = int.Parse(Console.ReadLine());
 
                     if (xkoor < 1 || xkoor > 10 || ykoor < 1 || ykoor > 10)
                     {
                         Console.WriteLine("Érvénytelen koordináta! Próbálja újra.");
                         continue;
                     }
-                    if (palya[xkoor, ykoor] != "   ")
+                    if (palya[xkoor-1, ykoor-1] != "   ")
                     {
                         Console.WriteLine("Ez a mező már foglalt! Próbálja újra.");
                         continue;
