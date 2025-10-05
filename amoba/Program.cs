@@ -8,15 +8,88 @@ namespace amoba
 
         static void Main(string[] args)
         {
-            
             for (int i = 0; i < 10; i++)
                 for (int j = 0; j < 10; j++)
                     palya[i, j] = "   ";
 
-            bool lepes = false; 
+            bool lepes = false;
             bool jatek = false;
+
+
+            FoMenu(ref jatek);
+
+            while (jatek)
+            {
+                bool jatekmenet = true;
+                Console.Clear();
+                Kiir();
+
+                string jatekos = lepes ? " o " : " x ";
+
+                int xkoor = 0;
+                int ykoor = 0;
+
+                bool jatekb = true;
+                while (jatekb)
+                {
+                    Console.WriteLine($"{jatekos} következik.");
+                    Console.Write("Adja meg az első koordinátát (1-10) ('q' a kilépéshez): ");
+                    string bemenet = Console.ReadLine();
+                    if (bemenet == "q")
+                    {
+                        Console.WriteLine("Viszlát!");
+                        jatekmenet = false;
+
+                        break;
+                    }
+
+                    if (!int.TryParse(bemenet, out xkoor))
+                    {
+                        Console.WriteLine("Kérlek számot adj meg!");
+                        continue;
+                    }
+                    Console.Write("Adja meg a második koordinátát (1-10) ('q' a kilépéshez): ");
+                    string bemenet2 = Console.ReadLine();
+                    if (bemenet2 == "q")
+                    {
+                        Console.WriteLine("Viszlát!");
+                        jatekmenet = false;
+                        break;
+                    }
+                    if (!int.TryParse(bemenet2, out ykoor))
+                    {
+                        Console.WriteLine("Kérlek számot adj meg!");
+                        continue;
+                    }
+                    else if (xkoor < 1 || xkoor > 10 || ykoor < 1 || ykoor > 10)
+                    {
+                        Console.WriteLine("Érvénytelen koordináta! Próbálja újra.");
+                        continue;
+                    }
+                    else if (palya[xkoor - 1, ykoor - 1] != "   ")
+                    {
+                        Console.WriteLine("Ez a mező már foglalt! Próbálja újra.");
+                        continue;
+                    }
+                    break;
+                }
+
+                if (jatekmenet == false)
+                {
+                    break;
+                }
+
+                palya[xkoor - 1, ykoor - 1] = jatekos;
+                lepes = !lepes;
+            }
+        }
+
+
+        static void FoMenu(ref bool jatek)
+        {
             bool fomenu = false;
-            
+            string tema = "fekete";
+
             do
             {
                 Console.Clear();
@@ -25,13 +98,12 @@ namespace amoba
                 Console.WriteLine("2. Téma választása");
                 Console.WriteLine("3. Kilépés");
 
-                string tema = "fekete";
-                
                 string valasztas = Console.ReadLine();
                 if (valasztas == "1")
                 {
                     jatek = true;
                     fomenu = false;
+
                 }
                 else if (valasztas == "2")
                 {
@@ -46,76 +118,29 @@ namespace amoba
                     Console.WriteLine("8. Fekete-vörös");
                     Console.WriteLine("9. Lila");
                     Console.WriteLine("10. Fekete-lila");
+
                     string alvalasztas = Console.ReadLine();
-                    if (alvalasztas == "1")
-                    {
-                        Console.Clear();
-                        tema = "fekete";
-                        fomenu = true;
-                    }
-                    else if (alvalasztas == "2")
-                    {
-                        Console.Clear();
-                        tema = "fehér";
-                        fomenu = true;
-                    }
-                    else if (alvalasztas == "3")
-                    {
-                        Console.Clear();
-                        tema = "kék";
-                        fomenu = true;
-                    }
-                    else if (alvalasztas == "4")
-                    {
-                        Console.Clear();
-                        tema = "cián";
-                        fomenu = true;
-                    }
-                    else if (alvalasztas == "5")
-                    {
-                        Console.Clear();
-                        tema = "vörös";
-                        fomenu = true;
-                    }
-                    else if (alvalasztas == "6")
-                    {
-                        Console.Clear();
-                        tema = "zöld";
-                        fomenu = true;
-                    }
-                    else if (alvalasztas == "7")
-                    {
-                        Console.Clear();
-                        tema = "fekete-zöld";
-                        fomenu = true;
-                    }
-                    else if (alvalasztas == "8")
-                    {
-                        Console.Clear();
-                        tema = "fekete-vörös";
-                        fomenu = true;
-                    }
-                    else if (alvalasztas == "9")
-                    {
-                        Console.Clear();
-                        tema = "lila";
-                        fomenu = true;
-                    }
-                    else if (alvalasztas == "10")
-                    {
-                        Console.Clear();
-                        tema = "fekete-lila";
-                        fomenu = true;
-                    }
+                    if (alvalasztas == "1") tema = "fekete";
+                    else if (alvalasztas == "2") tema = "fehér";
+                    else if (alvalasztas == "3") tema = "kék";
+                    else if (alvalasztas == "4") tema = "cián";
+                    else if (alvalasztas == "5") tema = "vörös";
+                    else if (alvalasztas == "6") tema = "zöld";
+                    else if (alvalasztas == "7") tema = "fekete-zöld";
+                    else if (alvalasztas == "8") tema = "fekete-vörös";
+                    else if (alvalasztas == "9") tema = "lila";
+                    else if (alvalasztas == "10") tema = "fekete-lila";
+
+                    
                     if (tema == "fekete")
                     {
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.ForegroundColor = ConsoleColor.White;
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     else if (tema == "fehér")
                     {
-                    Console.BackgroundColor = ConsoleColor.White;
-                    Console.ForegroundColor = ConsoleColor.Black;
+                        Console.BackgroundColor = ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.Black;
                     }
                     else if (tema == "kék")
                     {
@@ -157,6 +182,8 @@ namespace amoba
                         Console.BackgroundColor = ConsoleColor.Black;
                         Console.ForegroundColor = ConsoleColor.Magenta;
                     }
+
+                    fomenu = true;
                 }
                 else
                 {
@@ -165,96 +192,22 @@ namespace amoba
                     Environment.Exit(0);
                 }
             } while (fomenu);
-
-            while (jatek)
-            {
-                bool jatekmenet = true;
-                Console.Clear();
-                Kiir();
-
-                string jatekos = lepes ? " o " : " x ";
-
-                int xkoor = 0;
-                int ykoor = 0;
-
-
-                bool jatekb = true;
-                while (jatekb)
-                {
-                    Console.WriteLine($"{jatekos} következik.");
-                    Console.Write("Adja meg az első koordinátát (1-10) ('q' a kilépéshez): ");
-                    string bemenet = Console.ReadLine();
-                    if (bemenet == "q")
-                    {
-                        Console.WriteLine("Viszlát!");
-                        jatekmenet = false;
-                        break;
-                    }
-
-                    if (!int.TryParse(bemenet, out xkoor))
-                    {
-                        Console.WriteLine("Kérlek számot adj meg!");
-                        continue;
-                    }
-                    Console.Write("Adja meg a második koordinátát (1-10) ('q' a kilépéshez): ");
-                    string bemenet2 = Console.ReadLine();
-                    if (bemenet2 == "q")
-                    {
-                        Console.WriteLine("Viszlát!");
-                        jatekmenet = false;
-                        break;
-                    }
-                    if (!int.TryParse(bemenet2, out ykoor))
-                    {
-                        Console.WriteLine("Kérlek számot adj meg!");
-                        continue;
-                    }
-                    
-                    else if (xkoor < 1 || xkoor > 10 || ykoor < 1 || ykoor > 10)
-                    {
-                        Console.WriteLine("Érvénytelen koordináta! Próbálja újra.");
-                        continue;
-                    }
-                    else if (palya[xkoor-1, ykoor-1] != "   ")
-                    {
-                        Console.WriteLine("Ez a mező már foglalt! Próbálja újra.");
-                        continue;
-                    }
-                    break; 
-                }
-                
-                if(jatekmenet == false)
-                {
-                    
-                    break;
-                   
-                }
-                
-                palya[xkoor-1, ykoor-1] = jatekos;
-
-                
-                lepes = !lepes;
-            }
         }
 
-        
         static void Kiir()
         {
-             Console.Write("  ");
+            Console.Write("  ");
             for (int j = 1; j <= 10; j++)
             {
-               
-                Console.Write($" {j,2} ");  
+                Console.Write($" {j,2} ");
             }
             Console.WriteLine();
 
             Console.WriteLine("  ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐");
             for (int i = 0; i < 10; i++)
             {
-                
                 Console.Write($"{i + 1,2}|");
 
-                
                 for (int j = 0; j < 10; j++)
                 {
                     Console.Write(palya[i, j]);
