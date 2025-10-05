@@ -8,15 +8,27 @@ namespace amoba
 
         static void Main(string[] args)
         {
+
             for (int i = 0; i < 10; i++)
                 for (int j = 0; j < 10; j++)
                     palya[i, j] = "   ";
 
-            bool lepes = false;
             bool jatek = false;
 
 
             FoMenu(ref jatek);
+
+
+            if (jatek)
+            {
+                JatekInditas();
+            }
+        }
+
+        static void JatekInditas()
+        {
+            bool lepes = false;
+            bool jatek = true;
 
             while (jatek)
             {
@@ -33,14 +45,16 @@ namespace amoba
                 while (jatekb)
                 {
                     Console.WriteLine($"{jatekos} következik.");
-                    Console.Write("Adja meg az első koordinátát (1-10) ('q' a kilépéshez): ");
+                    Console.Write("Adja meg az első koordinátát (1-10) ('q' a főmenübe a kilépéshez): ");
                     string bemenet = Console.ReadLine();
                     if (bemenet == "q")
                     {
-                        Console.WriteLine("Viszlát!");
                         jatekmenet = false;
-
-                        break;
+                        FoMenu(ref jatek);
+                        if (jatek)
+                        {
+                            JatekInditas();
+                        }
                     }
 
                     if (!int.TryParse(bemenet, out xkoor))
@@ -48,13 +62,16 @@ namespace amoba
                         Console.WriteLine("Kérlek számot adj meg!");
                         continue;
                     }
-                    Console.Write("Adja meg a második koordinátát (1-10) ('q' a kilépéshez): ");
+                    Console.Write("Adja meg a második koordinátát (1-10) ('q' a főmenübe kilépéshez): ");
                     string bemenet2 = Console.ReadLine();
                     if (bemenet2 == "q")
                     {
-                        Console.WriteLine("Viszlát!");
                         jatekmenet = false;
-                        break;
+                        FoMenu(ref jatek);
+                        if (jatek)
+                        {
+                            JatekInditas();
+                        }
                     }
                     if (!int.TryParse(bemenet2, out ykoor))
                     {
@@ -83,7 +100,6 @@ namespace amoba
                 lepes = !lepes;
             }
         }
-
 
         static void FoMenu(ref bool jatek)
         {
@@ -131,7 +147,6 @@ namespace amoba
                     else if (alvalasztas == "9") tema = "lila";
                     else if (alvalasztas == "10") tema = "fekete-lila";
 
-                    
                     if (tema == "fekete")
                     {
                         Console.BackgroundColor = ConsoleColor.Black;
