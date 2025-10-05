@@ -49,6 +49,7 @@ namespace amoba
                     string bemenet = Console.ReadLine();
                     if (bemenet == "q")
                     {
+                        ResetPalya();
                         jatekmenet = false;
                         FoMenu(ref jatek);
                         if (jatek)
@@ -66,6 +67,7 @@ namespace amoba
                     string bemenet2 = Console.ReadLine();
                     if (bemenet2 == "q")
                     {
+                        ResetPalya();
                         jatekmenet = false;
                         FoMenu(ref jatek);
                         if (jatek)
@@ -234,6 +236,12 @@ namespace amoba
                 else
                     Console.WriteLine("  └───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘");
             }
+        }
+        static void ResetPalya()
+        {
+            for (int i = 0; i < 10; i++)
+                for (int j = 0; j < 10; j++)
+                    palya[i, j] = "   ";
         }
     }
 }
