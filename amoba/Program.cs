@@ -100,6 +100,23 @@ namespace amoba
 
                 palya[xkoor - 1, ykoor - 1] = jatekos;
                 lepes = !lepes;
+                
+                string nyertes = JatekM();
+                if (nyertes != " ")
+                {
+                    Console.Clear();
+                    Kiir();
+                    Console.WriteLine($"A nyertes: {nyertes}");
+                    Console.WriteLine("Nyomj meg egy gombot a folytatáshoz...");
+                    Console.ReadKey();
+                    ResetPalya();
+                    jatek = false;
+                    FoMenu(ref jatek);
+                    if (jatek)
+                    {
+                        JatekInditas();
+                    }
+                }
             }
         }
 
@@ -242,6 +259,107 @@ namespace amoba
             for (int i = 0; i < 10; i++)
                 for (int j = 0; j < 10; j++)
                     palya[i, j] = "   ";
+        }
+        static string JatekM()
+        {
+            
+            int xekviz = 0;
+            int okviz = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                
+                for (int k = 0; k < 10; k++)
+                {
+                    if (palya[i, k] == " x ")
+                    {
+                        xekviz++;
+                    }
+                    else if (palya[i, k] == " o ")
+                    {
+                        okviz++;
+                    }
+                    else if (palya[i, k] == "   ")
+                    {
+                        xekviz = 0;
+                        okviz = 0;
+                    }
+                    if (xekviz == 5)
+                    {
+                        return "X";
+                    }
+                    else if (okviz == 5)
+                    {
+                        return "O";
+                    }
+                }
+
+                
+                
+            }
+            //átló
+            //int index = 0;
+            //int xekviz = 0;
+            //int okviz = 0;
+            //for (int i = 0; i < 10; i++)
+            //{
+
+
+
+            //    if (palya[i, index] == " x ")
+            //    {
+            //        xekviz++;
+            //    }
+            //    else if (palya[i, index] == " o ")
+            //    {
+            //        okviz++;
+            //    }
+            //    else if (palya[i, index] == "   ")
+            //    {
+            //        xekviz = 0;
+            //        okviz = 0;
+            //    }
+            //    if (xekviz == 5)
+            //    {
+            //        return "X";
+            //    }
+            //    else if (okviz == 5)
+            //    {
+            //        return "O";
+            //    }
+            //    index++;
+            //}
+
+            for (int j = 0; j < 10; j++)
+                {
+                int xekfugg = 0;
+                int okfugg = 0;
+                //Függőleges szabály
+                for (int f = 0; f < 10; f++)
+                    {
+                        
+                        if (palya[f, j] == " x ") xekfugg++;
+                        else if (palya[f, j] == " o ") okfugg++;
+                        else if (palya[f, j] == "   ")
+                        {
+                            xekfugg = 0;
+                            okfugg = 0;
+                        }
+                        if (xekfugg == 5)
+                        {
+                            return "X";
+                        }
+                        else if (okfugg == 5)
+                        {
+                            return "O";
+                        }
+                    }
+
+                }
+                
+                
+            
+            return " ";
+
         }
     }
 }
