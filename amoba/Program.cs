@@ -276,10 +276,12 @@ namespace amoba
                     if (palya[i, k] == " x ")
                     {
                         xekviz++;
+                        okviz = 0;
                     }
                     else if (palya[i, k] == " o ")
                     {
                         okviz++;
+                        xekviz = 0;
                     }
                     else if (palya[i, k] == "   ")
                     {
@@ -362,8 +364,16 @@ namespace amoba
                 for (int f = 0; f < 10; f++)
                 {
 
-                    if (palya[f, j] == " x ") xekfugg++;
-                    else if (palya[f, j] == " o ") okfugg++;
+                    if (palya[f, j] == " x ")
+                    {
+                        xekfugg++;
+                        okfugg = 0;
+                    }
+                    else if (palya[f, j] == " o ")
+                    { 
+                        okfugg++; 
+                        xekfugg = 0;
+                    }
                     else if (palya[f, j] == "   ")
                     {
                         xekfugg = 0;
