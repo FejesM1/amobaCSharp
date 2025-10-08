@@ -100,7 +100,8 @@ namespace amoba
 
                 palya[xkoor - 1, ykoor - 1] = jatekos;
                 lepes = !lepes;
-                
+
+                Betelt();
                 string nyertes = JatekM();
                 if (nyertes != " ")
                 {
@@ -378,11 +379,26 @@ namespace amoba
                     }
                 }
             }
-        
-                
-            
+
+
+
             return " ";
 
+        }
+        static void Betelt()
+        {
+            for (int i = 0; i < 10; i++)
+                for (int j = 0; j < 10; j++)
+                    if (palya[i, j] == "   ") {
+                        return;
+                    }
+            Console.Clear();
+            Kiir();
+            Console.WriteLine("Döntetlen!");
+            Console.WriteLine("Nyomj meg egy gombot a folytatáshoz...");
+            Console.ReadKey();
+            ResetPalya();
+            
         }
     }
 }
